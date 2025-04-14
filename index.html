@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中国环境监测总站</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -49,12 +50,13 @@
     <div class="calendar-container">
         <div class="calendar-header">
             <span>我的日程</span>
-            <div>
-                <span>2023/03</span>
+            <div class="calendar-current-date">
                 <button>&lt;</button>
+                <span>2023/03</span>
                 <button>&gt;</button>
-                <button>今天</button>
+              
             </div>
+            <button>今天</button>
         </div>
         <table class="calendar-table">
             <thead>
@@ -417,5 +419,6 @@
     </div>
 </div>
 
+<script src="calendar.js"></script>
 </body>
 </html>

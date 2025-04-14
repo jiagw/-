@@ -295,13 +295,18 @@ body {
     align-items: center;
     margin-bottom: 10px;
 }
-
+.calendar-current-date{
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    height: 28px;
+    line-height: 28px;
+}
 .calendar-header span {
     font-size: 14px;
 }
 
 .calendar-header button {
-    background-color: var(--light-bg);
+    background-color: #F5F6FA;
     border: none;
     width: 24px;
     height: 24px;
@@ -346,19 +351,93 @@ body {
 }
 
 .calendar-table td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
     cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+    transition: var(--standard-transition);
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
 }
 
-.calendar-table td:hover:not(.today) {
-    background-color: #f0f0f0;
+.calendar-table td > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
 }
 
-.calendar-table td.today {
-    background-color: var(--secondary-color);
+.calendar-table td.empty-cell {
+    cursor: default;
+    /* background-color: #f9f9f9; */
+}
+
+.calendar-table td.adjacent-month {
+    cursor: default;
+    color: #bbbbbb;
+}
+
+.calendar-table td.adjacent-month > span {
+    color: #bbbbbb;
+}
+
+.calendar-table td:hover:not(.today):not(.empty-cell):not(.selected):not(.adjacent-month)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    z-index: 1;
+}
+
+.calendar-table td.today > span {
     color: white;
-    font-weight: bold;
+}
+
+.calendar-table td.today::after,
+.calendar-table td.selected::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.calendar-table td.today::after {
+    background-color: var(--primary-color);
+}
+
+.calendar-table td.selected::after {
+    background-color: var(--secondary-color);
+}
+
+.calendar-table td.selected > span {
+    color: white;
+}
+
+/* 选中日期信息区域 */
+.selected-date-info {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background-color: #f5f6fa;
+    border-radius: var(--radius);
+    font-size: 14px;
+    color: var(--primary-color);
+    text-align: center;
+    border-top: 1px solid #eee;
 }
 
 .event-list {
