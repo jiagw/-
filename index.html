@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中国环境监测总站</title>
+    <!-- 引入Bootstrap v4 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/assets/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
-
 <!-- 横幅区域 -->
 <div class="banner">
+    <!-- Bootstrap 轮播图 -->
+    <div id="bannerCarousel" class="carousel slide banner-carousel" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/bg.png" class="d-block w-100" alt="背景1">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/bg1.png" class="d-block w-100" alt="背景2">
+            </div>
+        </div>
+    </div>
+
     <!-- 顶部导航栏 -->
     <div class="header">
         <div class="header-left">
             <div class="logo">
-                <img src="/assets/中国环境监测总站.png" alt="中国环境监测总站">
+                <img src="/assets/logo.png" alt="中国环境监测总站">
                 <span>中国环境监测总站</span>
             </div>
             <div class="nav">
@@ -27,10 +42,10 @@
         </div>
 
         <div class="search-container">
-            <div class="search-box-wrapper">
-                <img class="search-icon" src="/assets/search.png">
-                <input type="text" class="search-box" placeholder="请输入搜索内容">
-            </div>
+            <!--            <div class="search-box-wrapper">-->
+            <!--                <img class="search-icon" src="/assets/search.png">-->
+            <!--                <input type="text" class="search-box" placeholder="请输入搜索内容">-->
+            <!--            </div>-->
             <div class="user-profile">
                 <span>王老师</span>
                 <img src="/assets/down.png">
@@ -47,120 +62,92 @@
     </div>
 
     <!-- 日历部分 -->
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <span>我的日程</span>
-            <div class="calendar-current-date">
-                <button>&lt;</button>
-                <span>2023/03</span>
-                <button>&gt;</button>
-              
+    <div class="calendar-wrapper">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <span>我的日程</span>
+                <div class="calendar-current-date">
+                    <button>&lt;</button>
+                    <span>2023/03</span>
+                    <button>&gt;</button>
+
+                </div>
+                <button class="calendar-today-button">今天</button>
             </div>
-            <button>今天</button>
+            <div class="calendar-content">
+                <table class="calendar-table">
+                    <thead>
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <!-- 当天日程盒子 -->
+                <div class="daily-schedule-container">
+                    <div class="daily-schedule-content">
+                        <ul class="schedule-list">
+                            <!-- 日程项将通过JavaScript动态添加 -->
+                        </ul>
+                        <div class="no-schedule">暂无日程</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <table class="calendar-table">
-            <thead>
-            <tr>
-                <th>日</th>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td class="today">9</td>
-                <td>10</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-            </tr>
-            <tr>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
+
+
     </div>
 </div>
 
 <!-- 服务模块区域 -->
 <div class="service-container">
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/work.png"></div>
+        <div class="service-icon"><img src="/assets/办公.png"></div>
         <div>数字化协同办公与综合服务</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/airQuality.png"></div>
+        <div class="service-icon"><img src="/assets/空气质量.png"></div>
         <div>环境空气质量监态势感知</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/声环境.png"></div>
         <div>水生态环境质量态势感知</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/水生态.png"></div>
         <div>土壤与地下水质量态势感知</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/天眼.png"></div>
         <div>天眼生态质量监测</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/土壤与地下水.png"></div>
         <div>声环境质量态势感知</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/污染源.png"></div>
         <div>污染源与新污染物监测管理</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/信息填报.png"></div>
         <div>应急监测管理</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/应急.png"></div>
         <div>生态环境监测质量管理</div>
     </div>
     <div class="service-card">
-        <div class="service-icon"><img src="/assets/办公@2x.png"></div>
+        <div class="service-icon"><img src="/assets/质量管理.png"></div>
         <div>生态环境监测信息统一联网填报</div>
     </div>
 </div>
@@ -175,27 +162,14 @@
             <span>查看全部</span>
         </div>
         <div class="tabs">
-            <span >通知</span>
+            <span>通知</span>
             <span>单位公告</span>
             <span class="active">办事公告</span>
         </div>
         <ul class="article-list">
             <li class="article-item">
-                <div class="article-title">2025年1月总站环境监测标准制研究及制修订项目申报通知</div>
-                <div class="article-date">2024-01-06</div>
-            </li>
-            <li class="article-item">
-                <div class="article-title">关于做好近十年度资料的整合</div>
-                <div class="article-date">2023-01-04</div>
-            </li>
-
-            <li class="article-item">
-                <div class="article-title">2024年12月总站环境监测标准制研究及制修订进展通报 📝</div>
-                <div class="article-date">2024-12-31</div>
-            </li>
-            <li class="article-item">
-                <div class="article-title">2024年6月 339项生态环境监测标准制修订完毕</div>
-                <div class="article-date">2024-12-08</div>
+                <div class="article-title"></div>
+                <div class="article-date"></div>
             </li>
         </ul>
     </div>
@@ -204,7 +178,11 @@
 <div class="content-section">
     <div class="content-left border-top-blue">
         <div class="section-header">
-            <h3>数智化引领</h3>
+            <div>
+                <div class="section-header-sort selected">数智化引领</div>
+                <div class="section-header-sort">技术交流</div>
+            </div>
+
             <span>更多</span>
         </div>
         <ul class="article-list">
@@ -221,7 +199,8 @@
                     国务院办公厅关于推进新型城市基础设施建设的意见发布
                 </div>
                 <div class="article-date">2023-12-08</div>
-            </li><li class="article-item">
+            </li>
+            <li class="article-item">
                 <div class="article-title">[生态致胜] 大模型中的一"知"之见广，视野共谋</div>
                 <div class="article-date">2023-01-06</div>
             </li>
@@ -238,7 +217,8 @@
                     国务院办公厅关于推进新型城市基础设施建设的意见发布
                 </div>
                 <div class="article-date">2023-12-08</div>
-            </li><li class="article-item">
+            </li>
+            <li class="article-item">
                 <div class="article-title">[生态致胜] 大模型中的一"知"之见广，视野共谋</div>
                 <div class="article-date">2023-01-06</div>
             </li>
@@ -260,61 +240,62 @@
     </div>
     <div class="content-tools">
         <div class="section-header">
-            <div class="section-header-title"><span>工具箱</span> <img src="assets/tools.png" style="width: 25px;margin-left: 15px;"></div>
+            <div class="section-header-title"><span>工具箱</span> <img src="assets/tools.png"
+                                                                       style="width: 25px;margin-left: 15px;"></div>
         </div>
         <div class="tools-grid">
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="数据分析">
+                    <img src="/images/iterationLogos/问卷.png" alt="智询问卷">
                 </div>
                 <div class="tool-info">
-                    <h4>数据分析工具</h4>
-                    <p>专业的环境数据分析平台，提供多维度数据可视化和趋势分析功能</p>
+                    <h4>智询问卷</h4>
+                    <p>工具介绍、使用方法、适用情境等描述</p>
                 </div>
             </div>
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="报告生成">
+                    <img src="/images/iterationLogos/软著.png" alt="软件著作">
                 </div>
                 <div class="tool-info">
-                    <h4>报告生成器</h4>
-                    <p>快速生成标准化监测报告，支持多种模板和数据导入方式</p>
+                    <h4>软件著作</h4>
+                    <p>快具介绍、使用方法、适用情境等描述</p>
                 </div>
             </div>
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="地图监测">
+                    <img src="/images/iterationLogos/看板.png" alt="资源看板">
                 </div>
                 <div class="tool-info">
-                    <h4>地图监测系统</h4>
-                    <p>基于GIS的环境监测地图，实时显示各监测点数据和预警信息</p>
+                    <h4>资源看板</h4>
+                    <p>单位转换、时间格式、转换数据清洗</p>
                 </div>
             </div>
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="数据采集">
+                    <img src="/images/iterationLogos/舆情.png" alt="舆情监测">
                 </div>
                 <div class="tool-info">
-                    <h4>移动数据采集</h4>
-                    <p>支持现场数据快速采集和上传，与中心数据库实时同步</p>
+                    <h4>舆情监测</h4>
+                    <p>单位转换、时间格式、转换数据清洗</p>
                 </div>
             </div>
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="预警系统">
+                    <img src="/images/iterationLogos/知识库.png" alt="知识库">
                 </div>
                 <div class="tool-info">
-                    <h4>环境预警系统</h4>
-                    <p>智能监测数据异常并生成预警，支持多级别警报和自动通知</p>
+                    <h4>知识库</h4>
+                    <p>单位转换、时间格式、转换数据清洗</p>
                 </div>
             </div>
             <div class="tool-item">
                 <div class="tool-image">
-                    <img src="/assets/水生态@2x.png" alt="资源库">
+                    <img src="/images/iterationLogos/导航.png" alt="模块导航">
                 </div>
                 <div class="tool-info">
-                    <h4>监测资源库</h4>
-                    <p>环境监测标准文档、操作规程和参考资料的综合资源平台</p>
+                    <h4>模块导航</h4>
+                    <p>单位转换、时间格式、转换数据清洗</p>
                 </div>
             </div>
         </div>
@@ -324,7 +305,11 @@
 <div class="content-section">
     <div class="content-left border-top-blue">
         <div class="section-header">
-            <h3>数智化引领</h3>
+            <div>
+                <div class="section-header-sort selected">站内咨询</div>
+                <div class="section-header-sort">前沿追踪</div>
+            </div>
+
             <span>更多</span>
         </div>
         <ul class="article-list">
@@ -362,7 +347,7 @@
             <span>更多</span>
         </div>
         <div class="tabs">
-            <span >通知</span>
+            <span>通知</span>
             <span>单位公告</span>
             <span class="active">办事公告</span>
         </div>
@@ -419,6 +404,13 @@
     </div>
 </div>
 
+<!-- 引入Bootstrap JS和Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
 <script src="calendar.js"></script>
 </body>
 </html>
