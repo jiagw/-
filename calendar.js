@@ -240,11 +240,6 @@ $(document).ready(function() {
     // 定义全局变量用于存储token
     let token = '';
 
-        // 成功获取token后，调用公告接口
-        getBulletins(token);
-
-        // 调用事件接口
-        getEvents(token);
     $.ajax({
         type: "POST",
         url: "http://127.0.0.1:8080/seeyon/rest/token",
@@ -258,7 +253,7 @@ $(document).ready(function() {
             if (jData.id !== -1){
                 token = jData.id;
 
-
+            
             }
         },
         error: function (err, txt) {
@@ -266,87 +261,7 @@ $(document).ready(function() {
         }
     });
 
-    // 获取公告列表
-    function getBulletins(token) {
-        // 可以修改bulTypeName参数的值
-        const bulTypeName = 'publishAll';
-
-        $.ajax({
-            type: "GET",
-            url: `http://127.0.0.1:8080/seeyon/rest/mh/bulletin/bulTypeName/${bulTypeName}?token=${token}`,
-            headers: {
-                'Accept': 'application/json'
-            },
-            async: true,
-            success: function (res) {
-                console.log('公告数据:', res);
-                // 处理公告数据并渲染到页面
-                renderBulletins(res);
-            },
-            error: function (err, txt) {
-                console.error('获取公告失败:', err.responseText);
-                renderBulletins([{
-                        "id": 7789977235736184321,
-                        "title": "2025年1月总站环境监测标准制研究及制修订项目申报通知",
-                        "createDate": "2025-04-11 10:10:10",
-                        "createUser": '王童',
-                        "updateDate": "2025-04-11 10:10:10",
-                        "deletedFlag": false,
-                        "url": ""
-                    },{
-                        "id": 7789977235736184321,
-                        "title": "关于做好近十年度资料的整合",
-                        "createDate": "2025-04-11 10:10:10",
-                        "createUser": '王童',
-                        "updateDate": "2025-04-11 10:10:10",
-                        "deletedFlag": false,
-                        "url": ""
-                    }]
-                );
-            }
-        });
-    }
-
-    // 渲染公告数据到页面
-    function renderBulletins(bulletinData) {
-        // 获取公告列表容器
-        const $bulletinContainer = $('.content-announcement .article-list');
-
-        // 清空现有内容
-        $bulletinContainer.empty();
-
-        // 检查是否有数据
-        if (!bulletinData || bulletinData.length === 0) {
-            $bulletinContainer.append('<li class="article-item"><div class="article-title">暂无公告</div></li>');
-            return;
-        }
-
-        // 遍历公告数据并添加到列表中
-        bulletinData.forEach(bulletin => {
-            // 格式化日期 - 只显示年月日
-            const createDate = bulletin.createDate ? bulletin.createDate.split(' ')[0] : '';
-
-            // 创建公告项目元素
-            const $bulletinItem = $(`
-                <li class="article-item">
-                    <div class="article-title">${bulletin.title}</div>
-                    <div class="article-date">${createDate}</div>
-                </li>
-            `);
-
-            // 如果有URL，添加点击事件
-            if (bulletin.url) {
-                $bulletinItem.on('click', function() {
-                    window.open(bulletin.url, '_blank');
-                });
-                $bulletinItem.css('cursor', 'pointer');
-            }
-
-            // 添加到容器中
-            $bulletinContainer.append($bulletinItem);
-        });
-    }
-
+ 
     // 获取事件列表
     function getEvents(token) {
         $.ajax({
@@ -465,9 +380,6 @@ $(document).ready(function() {
         
         return `${hours}:${minutes}`;
     }
-    
-    // 初始化日历
-    initCalendar();
     
     // 显示初始日期的日程
     showDailySchedule(selectedDate || new Date());

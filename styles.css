@@ -73,6 +73,28 @@ body {
     z-index: 100;
     box-shadow: var(--shadow);
     height: var(--header-height);
+    transition: var(--standard-transition);
+}
+
+.header.module-mode {
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header.module-mode .nav-item {
+    color: #333;
+}
+
+.header.module-mode .nav-item.active {
+    border-bottom: 2px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.header.module-mode .user-profile {
+    background-color: #f5f7fa;
+    color: #333;
 }
 
 .header-left {
@@ -245,6 +267,7 @@ body {
     width: 100%;
     box-shadow: var(--shadow);
     overflow: hidden;
+    margin-top: -64px;
 }
 
 /* Bootstrap轮播图样式 */
@@ -1328,12 +1351,12 @@ body {
 /* 模块导航页面样式 */
 .module-navigation {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-height));
     background-color: #f5f7fa;
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     left: 0;
-    z-index: 1000;
+    z-index: 90;
     overflow-y: auto;
 }
 
@@ -1392,7 +1415,7 @@ body {
 
 .module-nav-content {
     display: flex;
-    height: calc(100vh - 64px);
+    height: calc(100vh - var(--header-height));
     padding-left: 15%;
 }
 
@@ -1453,7 +1476,7 @@ body {
 
 .module-section {
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     scroll-margin-top: 20px;
     padding: 20px;
     transition: all 0.3s ease;
@@ -1465,7 +1488,6 @@ body {
     color: #333;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
 }
@@ -1485,9 +1507,8 @@ body {
 
 .module-item {
     background-color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border: 1px solid #eee;
 }
 
@@ -1514,6 +1535,11 @@ body {
     padding-left: 28px;
 }
 
+.module-item-content > div.disabled {
+    color: #bbb;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 .module-item-content > div:hover {
     color: var(--primary-color);
